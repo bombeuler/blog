@@ -1,6 +1,6 @@
 import anime from "animejs";
 
-export function svgAppear(ele) {
+const svgAppear = (ele) => {
   anime({
     targets: ele,
     strokeDashoffset: [anime.setDashoffset, 0],
@@ -12,4 +12,7 @@ export function svgAppear(ele) {
     direction: "alternate",
     loop: true,
   });
-}
+  console.log(1);
+};
+
+export { svgAppear };
