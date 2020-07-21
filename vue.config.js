@@ -14,6 +14,6 @@ module.exports = {
       .set("router", resolve("src/router"))
       .set("network", resolve("src/network"))
       .set("components", resolve("src/components"))
-      .set("animation", resolve("src/animation"));
+      .set("animation", resolve("src/assets/animation"));
   },
 };

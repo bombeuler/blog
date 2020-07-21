@@ -1,3 +1,4 @@
+
 <template>
   <div class="main" :style="{'backgroundImage':picBgc}"></div>
 </template>
