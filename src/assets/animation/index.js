@@ -12,7 +12,6 @@ const svgAppear = (ele) => {
     direction: "alternate",
     loop: true,
   });
-  console.log(1);
 };
 
 export { svgAppear };

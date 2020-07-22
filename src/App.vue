@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <router-view></router-view>
+    <router-view :key="nowKey"></router-view>
   </v-app>
 </template>
 
@@ -10,8 +10,17 @@ export default {
 
   components: {},
 
+  computed: {
+    nowKey() {
+      return this.$route.name;
+    }
+  },
+
   data: () => ({
     //
   })
 };
 </script>
+
+<style lang="scss">
+</style>
