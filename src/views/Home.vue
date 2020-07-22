@@ -110,7 +110,7 @@ export default {
         this.$router.push({
           path: where.path,
           query: {
-            fromwhere: this.$route.name
+            fromwhere: this.$route.path
           }
         });
       } else {
@@ -120,6 +120,9 @@ export default {
   },
   mounted() {
     svgAppear("svg path");
+    if (localStorage.getItem("Token") && !this.$store.state.token) {
+      this.$store.commit("setToken", localStorage.getItem("Token"));
+    }
   }
 };
 </script>
