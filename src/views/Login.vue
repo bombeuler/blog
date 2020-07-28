@@ -221,7 +221,7 @@ export default {
       if (isValid) {
         this.yetLoad = true;
         request({
-          url: "/api/me",
+          url: "/blog/php/signLogIn.php",
           method: "post",
           data: {
             type: "login",
@@ -259,7 +259,7 @@ export default {
     sumbit() {
       this.loading = true;
       request({
-        url: "/api/me",
+        url: "/blog/php/signLogIn.php",
         method: "post",
         data: {
           type: "register",
