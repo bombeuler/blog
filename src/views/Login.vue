@@ -184,7 +184,7 @@ export default {
       registerPart: {
         username: "",
         password: "",
-        passcode: "",
+        passcode: "11111111111111111111",
         truename: "",
       },
       nameRules: [
@@ -265,7 +265,7 @@ export default {
         data: {
           type: "register",
           username: this.registerPart.username,
-          password: md5(this.registerPart.password + salt),
+          password: md5(md5(this.registerPart.password) + salt),
           truename: this.registerPart.truename,
           salt: salt,
         },
