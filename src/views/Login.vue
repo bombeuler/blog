@@ -221,7 +221,7 @@ export default {
       if (isValid) {
         this.yetLoad = true;
         request({
-          url: "/api/me",
+          url: "/blog/php/signLogIn.php",
           method: "post",
           data: {
             type: "login",
@@ -260,7 +260,7 @@ export default {
       this.loading = true;
       const salt = Math.random().toString(36).substr(2);
       request({
-        url: "/api/me",
+        url: "/blog/php/signLogIn.php",
         method: "post",
         data: {
           type: "register",

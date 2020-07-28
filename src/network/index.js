@@ -10,6 +10,7 @@ const request = (config) => {
         return Qs.stringify(data);
       },
     ],
+    withCredentials:true,
   });
   return instance(config);
 };
