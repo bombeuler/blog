@@ -169,7 +169,7 @@ export default {
     return {
       alert: {
         text: "",
-        isShow: false
+        isShow: false,
       },
       dialog: false,
       loading: false,
@@ -179,31 +179,31 @@ export default {
       registValid: false,
       loginPart: {
         username: "",
-        password: ""
+        password: "",
       },
       registerPart: {
         username: "",
         password: "",
         passcode: "",
-        truename: ""
+        truename: "",
       },
       nameRules: [
-        v => !!v || "请填写昵称",
-        v => v.length <= 15 || "昵称应该少于15个字符"
+        (v) => !!v || "请填写昵称",
+        (v) => v.length <= 15 || "昵称应该少于15个字符",
       ],
       truenameRules: [
-        v => !!v || "请填写真实姓名",
-        v => v.length <= 5 || "姓名应该少于5个字符"
+        (v) => !!v || "请填写真实姓名",
+        (v) => v.length <= 5 || "姓名应该少于5个字符",
       ],
       passRules: [
-        v => !!v || "请填写密码",
-        v => v.length <= 20 || "密码长度小于20个字符"
+        (v) => !!v || "请填写密码",
+        (v) => v.length <= 20 || "密码长度小于20个字符",
       ],
       codeRules: [
-        v => !!v || "请填写注册码",
-        v => v.length === 20 || "注册码长度为20",
-        v => md5(v) === md5("11111111111111111111") || "注册码错误"
-      ]
+        (v) => !!v || "请填写注册码",
+        (v) => v.length === 20 || "注册码长度为20",
+        (v) => md5(v) === md5("11111111111111111111") || "注册码错误",
+      ],
     };
   },
   methods: {
@@ -226,10 +226,10 @@ export default {
           data: {
             type: "login",
             username: this.loginPart.username,
-            password: md5(this.loginPart.password)
-          }
+            password: md5(this.loginPart.password),
+          },
         })
-          .then(res => {
+          .then((res) => {
             console.log(res);
             this.yetLoad = false;
             if (res.data.status === 1) {
@@ -242,7 +242,7 @@ export default {
               this.loginSuccess(res.data.meta);
             }
           })
-          .catch(err => {
+          .catch((err) => {
             console.log(err);
             this.yetLoad = false;
             this.alert.text = "网络异常，请检查网络状态";
@@ -258,17 +258,19 @@ export default {
     },
     sumbit() {
       this.loading = true;
+      const salt = Math.random().toString(36).substr(2);
       request({
         url: "/api/me",
         method: "post",
         data: {
           type: "register",
           username: this.registerPart.username,
-          password: md5(this.registerPart.password),
-          truename: this.registerPart.truename
-        }
+          password: md5(this.registerPart.password + salt),
+          truename: this.registerPart.truename,
+          salt: salt,
+        },
       })
-        .then(res => {
+        .then((res) => {
           console.log(res);
           this.dialog = false;
           this.loading = false;
@@ -279,15 +281,15 @@ export default {
             this.loginSuccess(res.data.meta);
           }
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
           this.dialog = false;
           this.loading = false;
           this.alert.text = "网络异常，请检查网络状态";
           this.alert.isShow = true;
         });
-    }
-  }
+    },
+  },
 };
 </script>
 

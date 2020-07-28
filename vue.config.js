@@ -5,6 +5,7 @@ function resolve(dir) {
 }
 module.exports = {
   transpileDependencies: ["vuetify"],
+  baseUrl: "/dist/",
   chainWebpack: (config) => {
     config.resolve.alias
       .set("@", resolve("/src"))
