@@ -206,6 +206,11 @@ export default {
       ],
     };
   },
+  created() {
+    if (this.$store.state.token) {
+      this.$router.push({ path: "/Logined" });
+    }
+  },
   methods: {
     loginSuccess(meta) {
       this.$store.commit("loginBy", meta);
@@ -221,7 +226,7 @@ export default {
       if (isValid) {
         this.yetLoad = true;
         request({
-          url: "/blog/php/signLogIn.php",
+          url: "signLogIn.php",
           method: "post",
           data: {
             type: "login",
@@ -260,7 +265,7 @@ export default {
       this.loading = true;
       const salt = Math.random().toString(36).substr(2);
       request({
-        url: "/blog/php/signLogIn.php",
+        url: "signLogIn.php",
         method: "post",
         data: {
           type: "register",

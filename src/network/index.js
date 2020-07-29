@@ -3,14 +3,14 @@ import Qs from "qs";
 
 const request = (config) => {
   const instance = axios.create({
-    baseURL: "",
+    baseURL: "/blog/php/",
     timeout: 10000,
     transformRequest: [
       function(data) {
         return Qs.stringify(data);
       },
     ],
-    withCredentials:true,
+    withCredentials: true,
   });
   return instance(config);
 };
