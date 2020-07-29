@@ -3,8 +3,6 @@ include_once 'database.php';
 
 use blog\db;
 
-use function PHPSTORM_META\type;
-
 $db = db::getInstance();
 $token='';
 
