@@ -81,24 +81,24 @@ export default {
         {
           name: "注册登录",
           key: "login",
-          path: "/login"
+          path: "/login",
         },
         {
           name: "博客",
           key: "blog",
-          path: "/blog"
+          path: "/blog",
         },
         {
           name: "学习打卡",
           key: "learn",
-          path: "/learn"
+          path: "/learn",
         },
         {
           name: "源码地址",
           key: "sourcecode",
-          path: "https://github.com/bombeuler/blog"
-        }
-      ]
+          path: "https://github.com/bombeuler/blog",
+        },
+      ],
     };
   },
   computed: {},
@@ -110,20 +110,17 @@ export default {
         this.$router.push({
           path: where.path,
           query: {
-            fromwhere: this.$route.path
-          }
+            fromwhere: this.$route.path,
+          },
         });
       } else {
         this.$router.push(where.path);
       }
-    }
+    },
   },
   mounted() {
     svgAppear("svg path");
-    if (localStorage.getItem("Token") && !this.$store.state.token) {
-      this.$store.commit("setToken", localStorage.getItem("Token"));
-    }
-  }
+  },
 };
 </script>
 
