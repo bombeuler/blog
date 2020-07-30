@@ -24,9 +24,10 @@ export default new Vuex.Store({
   actions: {
     getInfor(context) {
       request({
-        url: "hhh",
+        url: "signLogIn.php",
         method: "post",
         data: {
+          type:'relogin',
           token: context.state.token,
         },
       })

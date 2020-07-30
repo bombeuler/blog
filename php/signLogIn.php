@@ -2,9 +2,11 @@
 include_once 'database.php';
 
 use blog\db;
+use blog\rd;
 
 $db = db::getInstance();
-$token='';
+$redis = rd::getInstance();
+$token = '';
 
 switch ($_POST['type']) {
     case 'register':
@@ -16,12 +18,12 @@ switch ($_POST['type']) {
         $result = $db->signIn($username, $password, $truename, $salt);
         if ($result) {
             $status = 0;
-            $token=md5($username.'onecho');
+            $token = md5($username . 'onecho');
         } else {
             $status = 1;
         }
 
-        echo json_encode(['status' => $status,'meta'=>['token'=>$token]]);
+        echo json_encode(['status' => $status, 'meta' => ['token' => $token]]);
         break;
     case 'login':
         $username = $_POST['username'];
@@ -29,7 +31,7 @@ switch ($_POST['type']) {
 
         $result = $db->logIn($username, $password);
         if (!$result) {
-            $token=md5($username.'onecho');
+            $token = md5($username . 'onecho');
         }
-        echo json_encode(['status' => $result,'meta'=>['token'=>$token]]);
+        echo json_encode(['status' => $result, 'meta' => ['token' => $token]]);
 }
