@@ -31,7 +31,11 @@
 export default {
   name: "Logined",
   components: {},
-  created() {},
+  created() {
+    if (!this.$store.state.token) {
+      this.$router.replace({ path: "/login" });
+    }
+  },
   methods: {
     returnHome() {
       this.$router.replace({ path: "/home" });

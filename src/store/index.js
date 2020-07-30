@@ -6,7 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    token: "g",
+    token: "",
     infor: {},
   },
   mutations: {
