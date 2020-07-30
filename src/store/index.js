@@ -32,7 +32,7 @@ export default new Vuex.Store({
         },
       })
         .then((res) => {
-          console.log(res.data.infor);
+          console.log(res);
           if (res.data.status === 1) {
             context.commit("setInfor", res.data.infor);
           }
