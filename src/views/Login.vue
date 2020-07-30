@@ -208,7 +208,7 @@ export default {
   },
   created() {
     if (this.$store.state.token) {
-      this.$router.push({ path: "/Logined" });
+      this.$router.replace({ path: "/logined" });
     }
   },
   methods: {
